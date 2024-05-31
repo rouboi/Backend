@@ -6,7 +6,7 @@ const app = express();
 
 // config Express.js
 app.use(express.json());
-app.use(cors());
+app.use(cors()); // Cross-Origin Access
 app.use(express.static(__dirname + "/static"));
 
 // Connecting to the database
@@ -58,7 +58,6 @@ app.post("/search/collection/lessons/", (req, res) => {
       search = {
         $or: [
           { title: { $regex: search, $options: "i" } },
-          { subject: { $regex: search, $options: "i" } },
           { location: { $regex: search, $options: "i" } },
         ],
       };
