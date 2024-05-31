@@ -7,13 +7,15 @@ const app = express();
 // config Express.js
 app.use(express.json());
 app.use(cors());
+app.use(express.static(__dirname + "/static"));
 
 // Connecting to the database
 var db;
-const uri = "mongodb+srv://oroupahwariebi:boyscout11@cluster0.v6pgzhn.mongodb.net/";
+const uri =
+  "mongodb+srv://oroupahwariebi:boyscout11@cluster0.v6pgzhn.mongodb.net/";
 try {
   const client = new MongoClient(uri);
-  db = client.db("webstore");
+  db = client.db("webstoredb");
   console.log("Successfully connected to MongoDB!");
 } catch (e) {
   console.error("Database connection failed. - Error:" + e);
